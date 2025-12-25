@@ -1,8 +1,20 @@
+// ===== BACKEND URL =====
+const API_URL = "https://titanic-placement-project.onrender.com/predict";
+
+// ===== OPTIONAL: WAKE UP BACKEND (Render cold start fix) =====
+fetch("https://titanic-placement-project.onrender.com/")
+  .then(() => console.log("Backend awake"))
+  .catch(() => console.log("Backend sleeping"));
+
 async function processPrediction() {
     const cta = document.getElementById('cta');
     const spinner = document.getElementById('spinner');
     const btnTxt = document.getElementById('btn-txt');
     const resultsArea = document.getElementById('results-area');
+
+    const resVal = document.getElementById('res-val');
+    const prog = document.getElementById('progress-bar');
+    const probNum = document.getElementById('prob-num');
 
     const inputs = {
         age: document.getElementById('age').value,
@@ -14,16 +26,24 @@ async function processPrediction() {
         embarked: document.getElementById('embarked').value
     };
 
-    if (Object.values(inputs).some(v => v === "")) {
+    // ===== VALIDATION =====
+    if (
+        inputs.age === "" ||
+        inputs.sex === "" ||
+        inputs.pclass === "" ||
+        inputs.embarked === ""
+    ) {
         alert("⚠️ Please fill all required fields.");
         return;
     }
 
+    // ===== UI LOADING =====
     cta.disabled = true;
     spinner.style.display = 'block';
     btnTxt.innerText = 'Calculating...';
     resultsArea.classList.remove('active');
 
+    // ===== PAYLOAD (MATCHES BACKEND EXACTLY) =====
     const payload = {
         Pclass: Number(inputs.pclass),
         Sex: Number(inputs.sex),
@@ -37,28 +57,26 @@ async function processPrediction() {
     };
 
     try {
-        const response = await fetch(
-            "https://titanic-placement-project.onrender.com/predict",
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            }
-        );
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
 
-        if (!response.ok) throw new Error("Server error");
+        if (!response.ok) {
+            throw new Error("API request failed");
+        }
 
         const data = await response.json();
 
+        // ===== RESULT DISPLAY =====
         resultsArea.classList.add('active');
-
-        const resVal = document.getElementById('res-val');
-        const prog = document.getElementById('progress-bar');
-        const probNum = document.getElementById('prob-num');
 
         const survived = data.survived === 1;
 
-        // Fake probability (visual purpose only)
+        // UI probability (visual only)
         const probability = survived ? 85 : 25;
 
         resVal.innerText = survived ? "SURVIVED 🎉" : "NOT SURVIVED ❌";
@@ -68,12 +86,15 @@ async function processPrediction() {
         prog.style.background = survived ? "var(--success)" : "var(--danger)";
         probNum.innerText = `${probability}% Confidence`;
 
-    } catch (e) {
+    } catch (error) {
+        console.error("Prediction error:", error);
+
         resultsArea.classList.add('active');
-        document.getElementById('res-val').innerText =
-            "⏳ Server waking up… try again in 20 seconds";
-        document.getElementById('res-val').style.color = "#facc15";
-        document.getElementById('prob-num').innerText = "";
+        resVal.innerText = "⏳ Server waking up… please wait 20 seconds and try again";
+        resVal.style.color = "#facc15";
+        probNum.innerText = "";
+        prog.style.width = "0%";
+
     } finally {
         cta.disabled = false;
         spinner.style.display = 'none';

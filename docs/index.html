@@ -5,24 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Titanic AI | Prediction Matrix</title>
 
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
-    
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
     <div class="card">
+
+        <!-- HEADER -->
         <div class="header">
-            <div class="status-badge"><i class="fa-solid fa-circle-check"></i> System Online</div>
+            <div class="status-badge">
+                <i class="fa-solid fa-circle-check"></i> System Online
+            </div>
             <h1>Titanic Survival AI</h1>
-            <p class="subtitle">Next-gen machine learning prediction engine trained on historical maritime datasets.</p>
+            <p class="subtitle">
+                Next-gen machine learning prediction engine trained on historical maritime datasets.
+            </p>
         </div>
 
+        <!-- FORM GRID -->
         <div class="grid-layout">
+
             <div class="section-title full">Personal Data</div>
-            
+
             <div class="field">
                 <label>AGE</label>
                 <div class="input-wrapper">
@@ -67,7 +80,7 @@
             </div>
 
             <div class="field">
-                <label>SIBLINGS/SPOUSE</label>
+                <label>SIBLINGS / SPOUSE</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-users"></i>
                     <input type="number" id="sibsp" placeholder="Count">
@@ -75,7 +88,7 @@
             </div>
 
             <div class="field">
-                <label>PARENTS/CHILDREN</label>
+                <label>PARENTS / CHILDREN</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-children"></i>
                     <input type="number" id="parch" placeholder="Count">
@@ -95,29 +108,44 @@
                 </div>
             </div>
 
+            <!-- BUTTON -->
             <button class="cta-button" id="cta" onclick="processPrediction()">
                 <span id="btn-txt">Execute ML Analysis</span>
                 <div class="spinner" id="spinner"></div>
             </button>
+
         </div>
 
+        <!-- RESULT -->
         <div id="results-area">
             <p class="res-label">Analysis Result</p>
             <div id="res-val" class="res-value"></div>
+
             <div class="visualizer">
                 <div id="progress-bar"></div>
             </div>
+
             <div id="prob-num" class="prob-number"></div>
         </div>
 
+        <!-- FOOTER -->
         <div class="footer">
-            <a href="https://www.instagram.com/amarpandit_official1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/amar-kumar-pandit-253411386" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://github.com/amar-pandit" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/amarpandit_official1" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/amar-kumar-pandit-253411386" target="_blank">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/amar-pandit" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
         </div>
+
     </div>
 </div>
 
-<script src="script.js"></script>
+<!-- ✅ UPDATED JS (cache busting) -->
+<script src="script.js?v=4"></script>
+
 </body>
 </html>
