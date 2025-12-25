@@ -1,94 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Titanic Survival Predictor</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Titanic Survival Predictor</title>
 
-    <!-- Font Awesome (Social Logos) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 
-    <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="card">
+<div class="page">
+  <div class="card">
+
     <h1>🚢 Titanic Survival Predictor</h1>
 
-    <p class="welcome">
-        Welcome aboard 👋
+    <p class="subtitle">
+      Welcome aboard 👋 <br />
+      <span>AI-powered survival prediction system</span>
     </p>
 
-    <p class="about">
-        AI-powered survival prediction system.<br>
-        Predict survival chances using a Machine Learning model
-        trained on Titanic passenger data.
+    <p class="desc">
+      Predict survival chances using a Machine Learning model
+      trained on Titanic passenger data.
     </p>
 
-    <input type="number" id="age" placeholder="Age">
-    <input type="number" id="fare" placeholder="Fare">
-    <input type="number" id="sibsp" placeholder="Siblings / Spouse">
-    <input type="number" id="parch" placeholder="Parents / Children">
+    <div class="form">
+      <input type="number" id="age" placeholder="Age" />
+      <input type="number" id="fare" placeholder="Fare" />
+      <input type="number" id="sibsp" placeholder="Siblings / Spouse" />
+      <input type="number" id="parch" placeholder="Parents / Children" />
 
-    <select id="sex">
+      <select id="sex">
         <option value="0">Male</option>
         <option value="1">Female</option>
-    </select>
+      </select>
 
-    <select id="pclass">
+      <select id="pclass">
         <option value="1">1st Class</option>
         <option value="2">2nd Class</option>
         <option value="3">3rd Class</option>
-    </select>
+      </select>
 
-    <select id="embarked">
+      <select id="embarked">
         <option value="0">Southampton</option>
         <option value="1">Cherbourg</option>
         <option value="2">Queenstown</option>
-    </select>
+      </select>
 
-    <select id="cabin">
+      <select id="cabin">
         <option value="0">No Cabin</option>
         <option value="1">Cabin Present</option>
-    </select>
+      </select>
+    </div>
 
     <button onclick="predict()">Predict</button>
 
-    <!-- Loader -->
     <div id="loader" class="loader hidden"></div>
 
-    <!-- Result -->
     <h2 id="result"></h2>
 
-    <!-- Probability -->
-    <div class="prob-bar">
-        <div id="prob-fill"></div>
+    <div class="progress">
+      <div id="prob-fill"></div>
     </div>
     <p id="prob-text"></p>
 
     <div class="divider"></div>
 
-    <!-- Social Icons -->
     <div class="social">
-        <p>Connect with me</p>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/amarpandit_official1" target="_blank" class="ig">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/amar-kumar-pandit-253411386" target="_blank" class="ln">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/amar-pandit" target="_blank" class="gh">
-                <i class="fa-brands fa-github"></i>
-            </a>
-        </div>
+      <a href="https://www.instagram.com/amarpandit_official1" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/amar-kumar-pandit-253411386" target="_blank">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/amar-pandit" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
     </div>
+
+  </div>
 </div>
 
-<script src="./script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
