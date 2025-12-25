@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titanic Survival Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+    <h1>🚢 Titanic Survival Predictor</h1>
+
+    <input type="number" id="age" placeholder="Age">
+    <input type="number" id="fare" placeholder="Fare">
+    <input type="number" id="sibsp" placeholder="Siblings/Spouse">
+    <input type="number" id="parch" placeholder="Parents/Children">
+
+    <select id="sex">
+        <option value="0">Male</option>
+        <option value="1">Female</option>
+    </select>
+
+    <select id="pclass">
+        <option value="1">1st Class</option>
+        <option value="2">2nd Class</option>
+        <option value="3">3rd Class</option>
+    </select>
+
+    <select id="embarked">
+        <option value="0">Southampton</option>
+        <option value="1">Cherbourg</option>
+        <option value="2">Queenstown</option>
+    </select>
+
+    <select id="cabin">
+        <option value="0">No Cabin</option>
+        <option value="1">Cabin Present</option>
+    </select>
+
+    <button onclick="predict()">Predict</button>
+
+    <h2 id="result"></h2>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
