@@ -4,7 +4,6 @@ async function processPrediction() {
     const btnTxt = document.getElementById('btn-txt');
     const resultsArea = document.getElementById('results-area');
     
-    // Form Elements
     const inputs = {
         age: document.getElementById('age').value,
         fare: document.getElementById('fare').value,
@@ -12,17 +11,14 @@ async function processPrediction() {
         pclass: document.getElementById('pclass').value,
         sibsp: parseInt(document.getElementById('sibsp').value || 0),
         parch: parseInt(document.getElementById('parch').value || 0),
-        embarked: document.getElementById('embarked').value,
-        cabin: document.getElementById('cabin').value
+        embarked: document.getElementById('embarked').value
     };
 
-    // Validation
     if (Object.values(inputs).some(v => v === "")) {
-        alert("⚠️ Matrix incomplete. Please provide all data points.");
+        alert("⚠️ Please fill all data points.");
         return;
     }
 
-    // UI Loading State
     cta.disabled = true;
     spinner.style.display = 'block';
     btnTxt.innerText = 'Calculating...';
@@ -36,7 +32,6 @@ async function processPrediction() {
         SibSp: inputs.sibsp,
         Parch: inputs.parch,
         Embarked: parseInt(inputs.embarked),
-        CabinPresent: parseInt(inputs.cabin),
         FamilySize: inputs.sibsp + inputs.parch + 1
     };
 
@@ -50,7 +45,6 @@ async function processPrediction() {
         if (!response.ok) throw new Error();
         const data = await response.json();
 
-        // Result Rendering
         resultsArea.classList.add('active');
         const prob = parseFloat(data.probability);
         const survived = data.result.toLowerCase().includes("survived");
@@ -64,15 +58,12 @@ async function processPrediction() {
         
         prog.style.width = prob + "%";
         prog.style.background = prob > 50 ? "var(--success)" : "var(--danger)";
-        prog.style.boxShadow = `0 0 20px ${prob > 50 ? "rgba(16,185,129,0.4)" : "rgba(239,68,68,0.4)"}`;
-        
         probNum.innerText = `${prob}% Probability`;
 
     } catch (e) {
         resultsArea.classList.add('active');
         document.getElementById('res-val').innerText = "SYSTEM ERROR";
-        document.getElementById('res-val').style.color = "var(--danger)";
-        document.getElementById('prob-num').innerText = "API unreachable or invalid data.";
+        document.getElementById('prob-num').innerText = "API unreachable. Check your internet.";
     } finally {
         cta.disabled = false;
         spinner.style.display = 'none';

@@ -95,18 +95,6 @@
                 </div>
             </div>
 
-            <div class="field full">
-                <label>CABIN ALLOCATION</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-door-open"></i>
-                    <select id="cabin">
-                        <option value="" disabled selected>Has Cabin?</option>
-                        <option value="0">No Record</option>
-                        <option value="1">Assigned</option>
-                    </select>
-                </div>
-            </div>
-
             <button class="cta-button" id="cta" onclick="processPrediction()">
                 <span id="btn-txt">Execute ML Analysis</span>
                 <div class="spinner" id="spinner"></div>
@@ -116,7 +104,6 @@
         <div id="results-area">
             <p class="res-label">Analysis Result</p>
             <div id="res-val" class="res-value"></div>
-            
             <div class="visualizer">
                 <div id="progress-bar"></div>
             </div>
