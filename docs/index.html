@@ -3,13 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Titanic Survival Predictor</title>
+
+    <!-- FONT AWESOME (LOGOS) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<div class="card glass">
+<div class="card">
     <h1>🚢 Titanic Survival Predictor</h1>
-    <p class="subtitle">Welcome aboard 👋 AI-powered survival predictor</p>
+
+    <p class="welcome">
+        Welcome aboard 👋<br>
+        <span>AI-powered survival prediction system</span>
+    </p>
+
+    <p class="about">
+        Predict survival chances using a Machine Learning model
+        trained on Titanic passenger data.
+    </p>
 
     <input type="number" id="age" placeholder="Age">
     <input type="number" id="fare" placeholder="Fare">
@@ -40,19 +58,34 @@
 
     <button onclick="predict()">Predict</button>
 
+    <!-- LOADER -->
     <div id="loader" class="loader hidden"></div>
-    <div id="resultBox" class="result-box hidden">
-        <h2 id="result"></h2>
-        <div class="progress-bar-bg">
-            <div id="progressBar" class="progress-bar"></div>
-        </div>
-    </div>
 
+    <!-- RESULT -->
+    <h2 id="result"></h2>
+
+    <!-- PROBABILITY -->
+    <div class="prob-bar">
+        <div id="prob-fill"></div>
+    </div>
+    <p id="prob-text"></p>
+
+    <div class="divider"></div>
+
+    <!-- SOCIAL LOGOS -->
     <div class="social">
         <p>Connect with me</p>
-        <a href="https://www.instagram.com/amarpandit_official1" target="_blank">Instagram</a>
-        <a href="https://www.linkedin.com/in/amar-kumar-pandit-253411386" target="_blank">LinkedIn</a>
-        <a href="https://github.com/amar-pandit" target="_blank">GitHub</a>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/amarpandit_official1" target="_blank" class="ig">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/amar-kumar-pandit-253411386" target="_blank" class="ln">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/amar-pandit" target="_blank" class="gh">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
     </div>
 </div>
 

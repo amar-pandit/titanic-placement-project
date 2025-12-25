@@ -1,5 +1,10 @@
 function predict() {
 
+    document.getElementById("loader").classList.remove("hidden");
+    document.getElementById("result").innerText = "Predicting...";
+    document.getElementById("prob-fill").style.width = "0%";
+    document.getElementById("prob-text").innerText = "";
+
     const sibsp = parseInt(document.getElementById("sibsp").value || 0);
     const parch = parseInt(document.getElementById("parch").value || 0);
 
@@ -15,33 +20,25 @@ function predict() {
         FamilySize: sibsp + parch + 1
     };
 
-    // Show loader
-    document.getElementById("loader").classList.remove("hidden");
-    document.getElementById("resultBox").classList.add("hidden");
-
     fetch("https://titanic-placement-project.onrender.com/predict", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(result => {
-
         document.getElementById("loader").classList.add("hidden");
-        document.getElementById("resultBox").classList.remove("hidden");
-
         document.getElementById("result").innerText = result.result;
 
-        let percent = result.survived === 1 ? 80 : 20;
-        document.getElementById("progressBar").style.width = percent + "%";
-
+        if (result.probability !== undefined) {
+            document.getElementById("prob-fill").style.width =
+                result.probability + "%";
+            document.getElementById("prob-text").innerText =
+                "Survival Probability: " + result.probability + "%";
+        }
     })
-    .catch(err => {
+    .catch(() => {
         document.getElementById("loader").classList.add("hidden");
-        document.getElementById("resultBox").classList.remove("hidden");
         document.getElementById("result").innerText = "❌ API Error";
-        console.error(err);
     });
 }
