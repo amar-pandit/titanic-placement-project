@@ -1,17 +1,18 @@
 function predict() {
 
+    const sibsp = parseInt(document.getElementById("sibsp").value || 0);
+    const parch = parseInt(document.getElementById("parch").value || 0);
+
     const data = {
         Pclass: parseInt(document.getElementById("pclass").value),
         Sex: parseInt(document.getElementById("sex").value),
         Age: parseFloat(document.getElementById("age").value),
         Fare: parseFloat(document.getElementById("fare").value),
-        SibSp: parseInt(document.getElementById("sibsp").value),
-        Parch: parseInt(document.getElementById("parch").value),
+        SibSp: sibsp,
+        Parch: parch,
         Embarked: parseInt(document.getElementById("embarked").value),
         CabinPresent: parseInt(document.getElementById("cabin").value),
-        FamilySize:
-            parseInt(document.getElementById("sibsp").value) +
-            parseInt(document.getElementById("parch").value) + 1
+        FamilySize: sibsp + parch + 1
     };
 
     fetch("http://127.0.0.1:8000/predict", {
