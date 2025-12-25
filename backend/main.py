@@ -11,7 +11,7 @@ app = FastAPI(title="Titanic Survival Prediction API")
 # ---------------- CORS ----------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # change to frontend URL in production
+    allow_origins=["*"],   # GitHub Pages / Render allowed
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -48,7 +48,7 @@ def predict_survival(data: Passenger):
     # Convert input to DataFrame
     df = pd.DataFrame([data.dict()])
 
-    # Ensure correct column order (VERY IMPORTANT)
+    # Ensure same column order as training
     df = df[
         [
             "Pclass",
@@ -63,7 +63,6 @@ def predict_survival(data: Passenger):
         ]
     ]
 
-    # Prediction
     prediction = model.predict(df)[0]
 
     return {
