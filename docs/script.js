@@ -15,7 +15,7 @@ function predict() {
         FamilySize: sibsp + parch + 1
     };
 
-    fetch("http://127.0.0.1:8000/predict", {
+    fetch("https://titanic-placement-project.onrender.com/predict", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
