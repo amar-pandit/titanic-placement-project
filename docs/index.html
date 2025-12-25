@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Titanic AI | Prediction Matrix</title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
-
-    <!-- ✅ CSS LINK -->
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,23 +15,19 @@
 <div class="container">
     <div class="card">
         <div class="header">
-            <div class="status-badge">
-                <i class="fa-solid fa-circle-check"></i> System Online
-            </div>
+            <div class="status-badge"><i class="fa-solid fa-circle-check"></i> System Online</div>
             <h1>Titanic Survival AI</h1>
-            <p class="subtitle">
-                Next-gen machine learning prediction engine trained on historical maritime datasets.
-            </p>
+            <p class="subtitle">Next-gen machine learning prediction engine trained on historical maritime datasets.</p>
         </div>
 
         <div class="grid-layout">
             <div class="section-title full">Personal Data</div>
-
+            
             <div class="field">
                 <label>AGE</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-user"></i>
-                    <input type="number" id="age" placeholder="e.g. 24">
+                    <input type="number" id="age" placeholder="e.g. 24" min="0" max="100">
                 </div>
             </div>
 
@@ -59,9 +51,9 @@
                     <i class="fa-solid fa-crown"></i>
                     <select id="pclass">
                         <option value="" disabled selected>Class</option>
-                        <option value="1">1st</option>
-                        <option value="2">2nd</option>
-                        <option value="3">3rd</option>
+                        <option value="1">1st (Elite)</option>
+                        <option value="2">2nd (Standard)</option>
+                        <option value="3">3rd (Economy)</option>
                     </select>
                 </div>
             </div>
@@ -70,7 +62,7 @@
                 <label>FARE ($)</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-ticket"></i>
-                    <input type="number" id="fare">
+                    <input type="number" id="fare" placeholder="Price paid">
                 </div>
             </div>
 
@@ -78,7 +70,7 @@
                 <label>SIBLINGS/SPOUSE</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-users"></i>
-                    <input type="number" id="sibsp">
+                    <input type="number" id="sibsp" placeholder="Count">
                 </div>
             </div>
 
@@ -86,7 +78,7 @@
                 <label>PARENTS/CHILDREN</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-children"></i>
-                    <input type="number" id="parch">
+                    <input type="number" id="parch" placeholder="Count">
                 </div>
             </div>
 
@@ -95,22 +87,22 @@
                 <div class="input-wrapper">
                     <i class="fa-solid fa-ship"></i>
                     <select id="embarked">
-                        <option value="" disabled selected>Select</option>
-                        <option value="0">Southampton</option>
-                        <option value="1">Cherbourg</option>
-                        <option value="2">Queenstown</option>
+                        <option value="" disabled selected>Select Port</option>
+                        <option value="0">Southampton (UK)</option>
+                        <option value="1">Cherbourg (France)</option>
+                        <option value="2">Queenstown (Ireland)</option>
                     </select>
                 </div>
             </div>
 
             <div class="field full">
-                <label>CABIN</label>
+                <label>CABIN ALLOCATION</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-door-open"></i>
                     <select id="cabin">
-                        <option value="" disabled selected>Select</option>
-                        <option value="0">No</option>
-                        <option value="1">Yes</option>
+                        <option value="" disabled selected>Has Cabin?</option>
+                        <option value="0">No Record</option>
+                        <option value="1">Assigned</option>
                     </select>
                 </div>
             </div>
@@ -124,6 +116,7 @@
         <div id="results-area">
             <p class="res-label">Analysis Result</p>
             <div id="res-val" class="res-value"></div>
+            
             <div class="visualizer">
                 <div id="progress-bar"></div>
             </div>
@@ -131,12 +124,13 @@
         </div>
 
         <div class="footer">
+            <a href="https://www.instagram.com/amarpandit_official1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/amar-kumar-pandit-253411386" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="https://github.com/amar-pandit" target="_blank"><i class="fa-brands fa-github"></i></a>
         </div>
     </div>
 </div>
 
-<!-- ✅ JS LINK -->
 <script src="script.js"></script>
 </body>
 </html>
