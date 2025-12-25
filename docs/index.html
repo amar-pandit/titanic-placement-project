@@ -1,92 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Titanic Survival Predictor</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Titanic AI | Prediction Matrix</title>
 
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-  <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="page">
-  <div class="card">
+<div class="container">
+    <div class="card">
 
-    <h1>🚢 Titanic Survival Predictor</h1>
+        <div class="header">
+            <div class="status-badge">
+                <i class="fa-solid fa-circle-check"></i> System Online
+            </div>
+            <h1>Titanic Survival AI</h1>
+            <p class="subtitle">Next-gen ML prediction engine</p>
+        </div>
 
-    <p class="subtitle">
-      Welcome aboard 👋 <br />
-      <span>AI-powered survival prediction system</span>
-    </p>
+        <div class="grid-layout">
 
-    <p class="desc">
-      Predict survival chances using a Machine Learning model
-      trained on Titanic passenger data.
-    </p>
+            <div class="section-title full">Personal Data</div>
 
-    <div class="form">
-      <input type="number" id="age" placeholder="Age" />
-      <input type="number" id="fare" placeholder="Fare" />
-      <input type="number" id="sibsp" placeholder="Siblings / Spouse" />
-      <input type="number" id="parch" placeholder="Parents / Children" />
+            <div class="field">
+                <label>AGE</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="number" id="age" placeholder="e.g. 24">
+                </div>
+            </div>
 
-      <select id="sex">
-        <option value="0">Male</option>
-        <option value="1">Female</option>
-      </select>
+            <div class="field">
+                <label>GENDER</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-venus-mars"></i>
+                    <select id="sex">
+                        <option value="" disabled selected>Select</option>
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select>
+                </div>
+            </div>
 
-      <select id="pclass">
-        <option value="1">1st Class</option>
-        <option value="2">2nd Class</option>
-        <option value="3">3rd Class</option>
-      </select>
+            <div class="section-title full">Ticket & Voyage</div>
 
-      <select id="embarked">
-        <option value="0">Southampton</option>
-        <option value="1">Cherbourg</option>
-        <option value="2">Queenstown</option>
-      </select>
+            <div class="field">
+                <label>CLASS</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-crown"></i>
+                    <select id="pclass">
+                        <option value="" disabled selected>Class</option>
+                        <option value="1">1st</option>
+                        <option value="2">2nd</option>
+                        <option value="3">3rd</option>
+                    </select>
+                </div>
+            </div>
 
-      <select id="cabin">
-        <option value="0">No Cabin</option>
-        <option value="1">Cabin Present</option>
-      </select>
+            <div class="field">
+                <label>FARE</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-ticket"></i>
+                    <input type="number" id="fare">
+                </div>
+            </div>
+
+            <button class="cta-button full" onclick="processPrediction()">
+                <span id="btn-txt">Execute ML Analysis</span>
+                <div class="spinner" id="spinner"></div>
+            </button>
+        </div>
+
+        <div id="results-area">
+            <p class="res-label">Analysis Result</p>
+            <div id="res-val" class="res-value"></div>
+            <div class="visualizer">
+                <div id="progress-bar"></div>
+            </div>
+            <div id="prob-num"></div>
+        </div>
+
+        <div class="footer">
+            <a href="https://instagram.com/amarpandit_official1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com/in/amar-kumar-pandit-253411386" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/amar-pandit" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+
     </div>
-
-    <button onclick="predict()">Predict</button>
-
-    <div id="loader" class="loader hidden"></div>
-
-    <h2 id="result"></h2>
-
-    <div class="progress">
-      <div id="prob-fill"></div>
-    </div>
-    <p id="prob-text"></p>
-
-    <div class="divider"></div>
-
-    <div class="social">
-      <a href="https://www.instagram.com/amarpandit_official1" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/amar-kumar-pandit-253411386" target="_blank">
-        <i class="fa-brands fa-linkedin-in"></i>
-      </a>
-      <a href="https://github.com/amar-pandit" target="_blank">
-        <i class="fa-brands fa-github"></i>
-      </a>
-    </div>
-
-  </div>
 </div>
 
-<script src="script.js"></script>
+<!-- JS -->
+<script src="js/app.js"></script>
 </body>
 </html>
