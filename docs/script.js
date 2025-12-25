@@ -15,6 +15,10 @@ function predict() {
         FamilySize: sibsp + parch + 1
     };
 
+    // Show loader
+    document.getElementById("loader").classList.remove("hidden");
+    document.getElementById("resultBox").classList.add("hidden");
+
     fetch("https://titanic-placement-project.onrender.com/predict", {
         method: "POST",
         headers: {
@@ -24,9 +28,19 @@ function predict() {
     })
     .then(res => res.json())
     .then(result => {
+
+        document.getElementById("loader").classList.add("hidden");
+        document.getElementById("resultBox").classList.remove("hidden");
+
         document.getElementById("result").innerText = result.result;
+
+        let percent = result.survived === 1 ? 80 : 20;
+        document.getElementById("progressBar").style.width = percent + "%";
+
     })
     .catch(err => {
+        document.getElementById("loader").classList.add("hidden");
+        document.getElementById("resultBox").classList.remove("hidden");
         document.getElementById("result").innerText = "❌ API Error";
         console.error(err);
     });

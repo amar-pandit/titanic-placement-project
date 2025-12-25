@@ -63,9 +63,14 @@ def predict_survival(data: Passenger):
         ]
     ]
 
+    # Prediction
     prediction = model.predict(df)[0]
+
+    # 🔥 Probability (Survival = class 1)
+    probability = model.predict_proba(df)[0][1] * 100
 
     return {
         "survived": int(prediction),
+        "probability": round(probability, 2),
         "result": "Survived 🎉" if prediction == 1 else "Not Survived ❌"
     }

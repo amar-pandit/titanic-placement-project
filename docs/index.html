@@ -7,8 +7,9 @@
 </head>
 <body>
 
-<div class="card">
+<div class="card glass">
     <h1>🚢 Titanic Survival Predictor</h1>
+    <p class="subtitle">Welcome aboard 👋 AI-powered survival predictor</p>
 
     <input type="number" id="age" placeholder="Age">
     <input type="number" id="fare" placeholder="Fare">
@@ -39,7 +40,20 @@
 
     <button onclick="predict()">Predict</button>
 
-    <h2 id="result"></h2>
+    <div id="loader" class="loader hidden"></div>
+    <div id="resultBox" class="result-box hidden">
+        <h2 id="result"></h2>
+        <div class="progress-bar-bg">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="social">
+        <p>Connect with me</p>
+        <a href="https://www.instagram.com/amarpandit_official1" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/amar-kumar-pandit-253411386" target="_blank">LinkedIn</a>
+        <a href="https://github.com/amar-pandit" target="_blank">GitHub</a>
+    </div>
 </div>
 
 <script src="./script.js"></script>
